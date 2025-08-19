@@ -8,7 +8,7 @@ public class FileTypeFilter {
 
     public boolean isInteger(String s){
         try {
-            Long.parseLong(s);
+            Long.parseLong(s.trim());
             return true;
         }catch (NumberFormatException e){
             return false;
@@ -17,7 +17,7 @@ public class FileTypeFilter {
 
     public boolean isFloat(String s){
         try {
-            Float.parseFloat(s);
+            Float.parseFloat(s.trim());
             return true;
         }catch (NumberFormatException e){
             return false;
@@ -46,7 +46,7 @@ public class FileTypeFilter {
 
     public static void stringWriterProcess(String line, String path, boolean append){
         try{BufferedWriter stringWriter = new BufferedWriter(new FileWriter(path + "strings.txt", append));
-            stringWriter.write(line);
+            stringWriter.write(line.trim());
             stringWriter.newLine();
             stringWriter.flush();
         }catch (IOException e){
