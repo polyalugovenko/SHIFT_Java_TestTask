@@ -1,26 +1,29 @@
-package org.example;
+package shift.test_task.cli.processing;
 
 import java.io.*;
+import java.util.List;
 
 public class FileTypeFilterManager {
-    static String[] files;
-    static String outputDir;
-    static String prefix;
-    static boolean append;
+    List<String> files;
+    String path;
+    boolean append;
 
-    FileTypeFilterManager(String[] files,
-    String outputDir,
-    String prefix,
+    public FileTypeFilterManager(List<String> files,
+    String path,
     boolean append){
-        FileTypeFilterManager.files = files;
-        FileTypeFilterManager.outputDir = outputDir;
-        FileTypeFilterManager.prefix = prefix;
-        FileTypeFilterManager.append = append;
+        this.files = files;
+        this.path = path;
+        this.append = append;
     }
 
-    public static void filterManage() {
-        String path = outputDir + "/" + prefix;
+    public void filterManage() {
         FileTypeFilter fileTypeFilter = new FileTypeFilter();
+
+        if (files == null || files.isEmpty()) {
+            System.out.println("Нет файлов для обработки");
+            return;
+        }
+
         for (String fileName: files){
             try{
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -36,8 +39,8 @@ public class FileTypeFilterManager {
                     FileTypeFilter.stringWriterProcess(line, path, append);
                 }
             }
-            }catch (IOException _){
-                System.out.println("Ошибка при чтении файла " + fileName);
+            }catch (IOException e){
+                System.out.println("Ошибка при чтении файла " + fileName + ": " + e.getMessage());
             }
         }
     }
