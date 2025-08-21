@@ -1,4 +1,6 @@
-package org.example;
+package shift.test_task.cli;
+
+import java.util.List;
 
 public record ConfigArgs(
      String outputDir,
@@ -6,11 +8,11 @@ public record ConfigArgs(
      boolean append,
      boolean shortStats,
      boolean fullStats,
-     String[] inputFiles)
+     List<String> inputFiles)
 {
     public ConfigArgs{
         if (shortStats && fullStats){
-            throw new IllegalArgumentException("Options -s and -f cannot be used together");
+            shortStats = false;
         }
     }
 }
