@@ -1,4 +1,4 @@
-package shift.test_task.cli;
+package shift.test_task.cli.cliArgs;
 
 import java.util.List;
 
