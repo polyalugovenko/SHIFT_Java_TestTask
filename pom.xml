@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.Main</mainClass>
+                            <mainClass>shift.test_task.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
