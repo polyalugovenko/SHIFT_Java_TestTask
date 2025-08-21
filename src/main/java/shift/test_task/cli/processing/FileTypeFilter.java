@@ -1,4 +1,4 @@
-package org.example;
+package shift.test_task.cli.processing;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,7 +17,7 @@ public class FileTypeFilter {
 
     public boolean isFloat(String s){
         try {
-            Float.parseFloat(s.trim());
+            Double.parseDouble(s.trim());
             return true;
         }catch (NumberFormatException e){
             return false;
